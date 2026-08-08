@@ -8,6 +8,8 @@ const DEFAULT_CHALLENGE = {
   currentDay: 1,
   completedDays: [],
   streak: 0,
+  xp: 0,
+  projects: [],
   challengeCompleted: false,
 };
 
@@ -24,6 +26,8 @@ function readChallenge() {
       currentDay: challengeCompleted ? 60 : Math.min(Math.max(Number(saved.currentDay) || 1, 1), 60),
       completedDays,
       streak: Math.max(Number(saved.streak) || 0, 0),
+      xp: Math.max(Number(saved.xp) || 0, 0),
+      projects: Array.isArray(saved.projects) ? saved.projects.filter((project) => project && Number.isInteger(project.day) && project.github).slice(0, 60) : [],
       challengeCompleted,
     };
   } catch {
@@ -66,7 +70,26 @@ export function ChallengeProvider({ children }) {
     });
   }, [updateChallenge]);
 
-  const value = useMemo(() => ({ challenge, startChallenge, completeDay }), [challenge, startChallenge, completeDay]);
+  const submitProject = useCallback((project) => {
+    updateChallenge((previous) => {
+      const alreadyCompleted = previous.completedDays.includes(project.day);
+      const completedDays = [...new Set([...previous.completedDays, project.day])].sort((a, b) => a - b);
+      const challengeCompleted = completedDays.length === 60;
+      const projects = [...previous.projects.filter((item) => item.day !== project.day), { ...project, xpEarned: 50, completedAt: new Date().toISOString() }].sort((a, b) => a.day - b.day);
+      return {
+        ...previous,
+        challengeStarted: true,
+        completedDays,
+        projects,
+        xp: previous.xp + (alreadyCompleted ? 0 : 50),
+        streak: alreadyCompleted ? previous.streak : previous.streak + 1,
+        currentDay: challengeCompleted ? 60 : Math.max(previous.currentDay, Math.min(project.day + 1, 60)),
+        challengeCompleted,
+      };
+    });
+  }, [updateChallenge]);
+
+  const value = useMemo(() => ({ challenge, startChallenge, completeDay, submitProject }), [challenge, startChallenge, completeDay, submitProject]);
   return <ChallengeContext.Provider value={value}>{children}</ChallengeContext.Provider>;
 }
 
