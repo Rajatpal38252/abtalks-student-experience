@@ -47,17 +47,9 @@ const NAV_ITEMS = [
 
 
 
-const LEADERS = [
-  { rank: 1, name: 'Aanya Kapoor', initials: 'AK', streak: 34, tone: 'purple' },
-  { rank: 2, name: 'Jayden Lee', initials: 'JL', streak: 29, tone: 'blue' },
-  { rank: 3, name: 'Maya Nair', initials: 'MN', streak: 26, tone: 'cyan' },
-];
 
-const ACTIVITY = [
-  { title: 'Published Focus Flow', detail: 'Project 18 · GitHub synced', icon: GitBranch, tone: 'cyan' },
-  { title: 'Completed Day 17 mission', detail: 'UI state and accessibility', icon: Check, tone: 'purple' },
-  { title: 'Earned Commit Craft', detail: '100 GitHub commits reached', icon: Award, tone: 'violet' },
-];
+
+
 
 const WEEK = [4, 3, 4, 2, 4, 1, 3];
 
@@ -78,7 +70,7 @@ function Brand() {
   );
 }
 
-function Sidebar({ active, onNavigate, mobileOpen, onClose }) {
+function Sidebar({ active, challenge, onNavigate, mobileOpen, onClose }) {
   return (
     <>
       <AnimatePresence>
@@ -95,7 +87,12 @@ function Sidebar({ active, onNavigate, mobileOpen, onClose }) {
         </nav>
         <div className="dashboard-sidebar-footer glass">
           <span className="dashboard-sidebar-footer-icon"><Sparkles size={17} /></span>
-          <div><strong>Day 18 of 60</strong><small>Your momentum looks great.</small></div>
+         <div>
+  <strong>Day {challenge.currentDay} of 60</strong>
+  <small>
+    {challenge.completedDays.length} challenges completed
+  </small>
+</div>
         </div>
         <a className="dashboard-help-link" href="#support"><CircleHelp size={17} /> Need help?</a>
       </aside>
@@ -262,7 +259,15 @@ function MissionCard({ challenge, onStart }) {
 }
 
 function dayMission(day) {
-  return MISSIONS.find((mission) => mission.day === day);
+  return (
+    MISSIONS.find((mission) => mission.day === day) || {
+      title: `Project Challenge ${day}`,
+      description: "Complete today's development challenge.",
+      focus: "React",
+      time: "60–90 mins",
+      difficulty: "Intermediate",
+    }
+  );
 }
 
 function WeeklyActivity() {
@@ -270,8 +275,31 @@ function WeeklyActivity() {
   return <section className="dashboard-panel dashboard-weekly card"><div className="dashboard-panel-heading"><div><span className="dashboard-kicker">Weekly activity</span><h2>Keep the graph green.</h2></div><span className="dashboard-legend"><i /><span>More activity</span></span></div><div className="dashboard-week-grid">{WEEK.map((level, index) => <motion.div className="dashboard-week-day" key={labels[index]} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.06 }}><span className="dashboard-week-cells">{Array.from({ length: 5 }, (_, cell) => <i key={cell} className={`dashboard-heat dashboard-heat--${cell < level ? level : 0}`} />)}</span><small>{labels[index]}</small></motion.div>)}</div></section>;
 }
 
-function Projects({ projects }) {
-  return <section className="dashboard-panel" id="projects"><div className="dashboard-section-heading"><div><span className="dashboard-kicker">Recent projects</span><h2>Your proof of work</h2></div><button className="dashboard-text-button" onClick={() => scrollToSection('projects')}>View all <ExternalLink size={15} /></button></div><div className="dashboard-project-grid">{projects.length === 0 ? <div className="dashboard-empty-state"><p>No projects submitted yet. Complete challenges to build your portfolio!</p></div> : projects.map((project, index) => <motion.article className="dashboard-project card" key={project.day} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ delay: index * 0.08 }} whileHover={{ y: -5 }}><div className="dashboard-project-art dashboard-project-art--blue"><Code2 size={25} /><button aria-label={`Project options for ${project.title}`}><MoreHorizontal size={18} /></button></div><div className="dashboard-project-copy"><div><h3>{project.title}</h3><span className="dashboard-project-status dashboard-project-status--blue">Day {project.day}</span></div><p>{project.learned || project.description || 'No description provided'}</p><div className="dashboard-tech-list">{project.skills && project.skills.map((item) => <span key={item}>{item}</span>)}</div><div className="dashboard-project-links"><a href={project.github} target="_blank" rel="noreferrer" className="dashboard-github-link"><GitBranch size={16} /> GitHub <ExternalLink size={13} /></a>{project.demo && <a href={project.demo} target="_blank" rel="noreferrer" className="dashboard-github-link"><ExternalLink size={16} /> Live Demo</a>}</div><div className="dashboard-project-meta">
+function Projects({ projects, onStart }) {
+  return <section className="dashboard-panel" id="projects"><div className="dashboard-section-heading"><div><span className="dashboard-kicker">Recent projects</span><h2>Your proof of work</h2></div><button className="dashboard-text-button" onClick={() => scrollToSection('projects')}>View all <ExternalLink size={15} /></button></div><div className="dashboard-project-grid">{projects.length === 0 ? (
+  <motion.div
+    className="dashboard-empty-state card"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+  >
+    <FolderKanban size={54} />
+
+    <h3>No Projects Yet</h3>
+
+    <p>
+      Start today's challenge and publish your first GitHub project.
+      Your portfolio will automatically appear here.
+    </p>
+
+    <button
+      className="btn-primary dashboard-main-button"
+      onClick={onStart}
+    >
+      <Play size={16} />
+      Start Building
+    </button>
+  </motion.div>
+)  : projects.map((project, index) => <motion.article className="dashboard-project card" key={project.day} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ delay: index * 0.08 }} whileHover={{ y: -5 }}><div className="dashboard-project-art dashboard-project-art--blue"><Code2 size={25} /><button aria-label={`Project options for ${project.title}`}><MoreHorizontal size={18} /></button></div><div className="dashboard-project-copy"><div><h3>{project.title}</h3><span className="dashboard-project-status dashboard-project-status--blue">Day {project.day}</span></div><p>{project.learned || project.description || 'No description provided'}</p><div className="dashboard-tech-list">{project.skills && project.skills.map((item) => <span key={item}>{item}</span>)}</div><div className="dashboard-project-links"><a href={project.github} target="_blank" rel="noreferrer" className="dashboard-github-link"><GitBranch size={16} /> GitHub <ExternalLink size={13} /></a>{project.demo && <a href={project.demo} target="_blank" rel="noreferrer" className="dashboard-github-link"><ExternalLink size={16} /> Live Demo</a>}</div><div className="dashboard-project-meta">
   <span className="dashboard-project-xp">
     +{project.xpEarned ?? 50} XP
   </span>
@@ -396,12 +424,131 @@ function Achievements({ challenge }) {
   );
 }
 
-function Leaderboard() {
-  return <section className="dashboard-panel dashboard-leaderboard card" id="leaderboard"><div className="dashboard-panel-heading"><div><span className="dashboard-kicker">Leaderboard</span><h2>This week’s builders</h2></div><Trophy size={21} className="dashboard-heading-icon" /></div><ol>{LEADERS.map((leader) => <li key={leader.name}><span className={`dashboard-rank dashboard-rank--${leader.rank}`}>{leader.rank}</span><span className={`dashboard-leader-avatar dashboard-leader-avatar--${leader.tone}`}>{leader.initials}</span><strong>{leader.name}</strong><span className="dashboard-leader-streak"><Flame size={15} /> {leader.streak}</span></li>)}</ol><button className="dashboard-text-button" onClick={() => scrollToSection('leaderboard')}>See full leaderboard <ExternalLink size={15} /></button></section>;
+function Leaderboard({ challenge }) {
+  const leaders = [
+    {
+      rank: 1,
+      name: "You",
+      initials: "RK",
+      streak: challenge.streak,
+      tone: "purple",
+    },
+    {
+      rank: 2,
+      name: "Builder #102",
+      initials: "B1",
+      streak: Math.max(challenge.streak + 4, 18),
+      tone: "blue",
+    },
+    {
+      rank: 3,
+      name: "Builder #241",
+      initials: "B2",
+      streak: Math.max(challenge.streak + 2, 15),
+      tone: "cyan",
+    },
+  ];
+
+  return (
+    <section
+      className="dashboard-panel dashboard-leaderboard card"
+      id="leaderboard"
+    >
+      <div className="dashboard-panel-heading">
+        <div>
+          <span className="dashboard-kicker">Leaderboard</span>
+          <h2>Community builders</h2>
+        </div>
+
+        <Trophy size={21} className="dashboard-heading-icon" />
+      </div>
+
+      <ol>
+        {leaders.map((leader) => (
+          <li key={leader.name}>
+            <span className={`dashboard-rank dashboard-rank--${leader.rank}`}>
+              {leader.rank}
+            </span>
+
+            <span
+              className={`dashboard-leader-avatar dashboard-leader-avatar--${leader.tone}`}
+            >
+              {leader.initials}
+            </span>
+
+            <strong>{leader.name}</strong>
+
+            <span className="dashboard-leader-streak">
+              <Flame size={15} />
+              {leader.streak}
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <button className="dashboard-text-button">
+        Global leaderboard coming soon
+      </button>
+    </section>
+  );
 }
 
-function Timeline() {
-  return <section className="dashboard-panel dashboard-timeline card" id="support"><div className="dashboard-panel-heading"><div><span className="dashboard-kicker">Recent activity</span><h2>Your latest wins</h2></div></div><div>{ACTIVITY.map(({ title, detail, icon: Icon, tone }) => <article className="dashboard-timeline-item" key={title}><span className={`dashboard-timeline-icon dashboard-timeline-icon--${tone}`}><Icon size={15} /></span><div><strong>{title}</strong><p>{detail}</p></div></article>)}</div></section>;
+function Timeline({ challenge }) {
+  const activities = [
+    {
+      title: `Completed ${challenge.completedDays.length} challenge${
+        challenge.completedDays.length === 1 ? "" : "s"
+      }`,
+      detail: `${challenge.completedDays.length}/60 days finished`,
+      icon: Check,
+      tone: "purple",
+    },
+    {
+      title: `${challenge.projects.length} portfolio project${
+        challenge.projects.length === 1 ? "" : "s"
+      } submitted`,
+      detail: "Projects synced successfully",
+      icon: GitBranch,
+      tone: "cyan",
+    },
+    {
+      title: `${challenge.xp} XP earned`,
+      detail: "Keep completing challenges to level up",
+      icon: Award,
+      tone: "violet",
+    },
+  ];
+
+  return (
+    <section
+      className="dashboard-panel dashboard-timeline card"
+      id="support"
+    >
+      <div className="dashboard-panel-heading">
+        <div>
+          <span className="dashboard-kicker">Recent activity</span>
+          <h2>Your latest wins</h2>
+        </div>
+      </div>
+
+      <div>
+        {activities.map(({ title, detail, icon: Icon, tone }) => (
+          <article className="dashboard-timeline-item" key={title}>
+            <span
+              className={`dashboard-timeline-icon dashboard-timeline-icon--${tone}`}
+            >
+              <Icon size={15} />
+            </span>
+
+            <div>
+              <strong>{title}</strong>
+              <p>{detail}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default function Dashboard() {
@@ -451,11 +598,21 @@ setTimeout(() => {
     navigateTo(`/challenge/day/${challenge.currentDay}`);
   };
 
-  return <div className="dashboard-app"><Sidebar active={active} onNavigate={navigate} mobileOpen={mobileOpen} onClose={() => setMobileOpen(false)} /><div className="dashboard-main"><Topbar onMenu={() => setMobileOpen(true)} />{lockedMessage && (
+  return <div className="dashboard-app"><Sidebar
+    active={active}
+    challenge={challenge}
+    onNavigate={navigate}
+    mobileOpen={mobileOpen}
+    onClose={() => setMobileOpen(false)}
+/><div className="dashboard-main"><Topbar onMenu={() => setMobileOpen(true)} />{lockedMessage && (
   <div className="dashboard-toast">
       {lockedMessage}
   </div>
 )}<main className="dashboard-content"><motion.section className="dashboard-welcome" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}><div><span className="dashboard-kicker">
     {today}
-</span><h1>Welcome back, Rajat <span>✦</span></h1><p>You’re building a strong portfolio, one focused day at a time.</p></div><button className="btn-primary dashboard-main-button" onClick={openCurrentChallenge}>Continue today’s challenge <Play size={17} fill="currentColor" /></button></motion.section><StatCards challenge={challenge} /><div className="dashboard-primary-grid"><ProgressSection challenge={challenge} /><MissionCard challenge={challenge} onStart={openCurrentChallenge} /></div><WeeklyActivity /><Projects projects={projects} /><Achievements challenge={challenge} /><div className="dashboard-bottom-grid"><Leaderboard /><Timeline /></div></main></div></div>;
+</span><h1>Welcome back, Rajat <span>✦</span></h1><p>You’re building a strong portfolio, one focused day at a time.</p></div><button className="btn-primary dashboard-main-button" onClick={openCurrentChallenge}>Continue today’s challenge <Play size={17} fill="currentColor" /></button></motion.section><StatCards challenge={challenge} /><div className="dashboard-primary-grid"><ProgressSection challenge={challenge} /><MissionCard challenge={challenge} onStart={openCurrentChallenge} /></div><WeeklyActivity /><Projects
+    projects={projects}
+    onStart={openCurrentChallenge}
+/><Achievements challenge={challenge} /><div className="dashboard-bottom-grid"><Leaderboard challenge={challenge} />
+<Timeline challenge={challenge} /></div></main></div></div>;
 }

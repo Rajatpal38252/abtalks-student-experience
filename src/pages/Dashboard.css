@@ -32,3 +32,37 @@
 @media (max-width: 1100px) { .dashboard-stats { grid-template-columns: repeat(2,minmax(0,1fr)); }.dashboard-project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.dashboard-achievement-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 820px) { .dashboard-sidebar { transform: translateX(-105%); transition: transform .3s ease; box-shadow: 14px 0 40px rgba(0,0,0,.4); }.dashboard-sidebar--open { transform: translateX(0); }.dashboard-scrim { position: fixed; inset: 0; z-index: 25; display: block; padding: 0; border: 0; background: rgba(0,0,0,.6); }.dashboard-main { width: 100%; margin-left: 0; }.dashboard-menu-toggle,.dashboard-sidebar-close { display: grid; }.dashboard-topbar { padding: 0 1rem; }.dashboard-content { padding: 2rem 1rem 3rem; }.dashboard-primary-grid { grid-template-columns: 1fr; }.dashboard-weekly { margin-bottom: 2rem; } }
 @media (max-width: 560px) { .dashboard-topbar-copy,.dashboard-profile-name { display: none; }.dashboard-topbar { min-height: 4.25rem; }.dashboard-welcome { align-items: flex-start; flex-direction: column; }.dashboard-welcome .dashboard-main-button { width: 100%; }.dashboard-stats { grid-template-columns: 1fr 1fr; gap: .7rem; }.dashboard-stat { flex-direction: column; gap: .6rem; padding: .9rem; }.dashboard-stat-icon { width: 2.2rem; height: 2.2rem; }.dashboard-stat strong { font-size: 1.05rem; }.dashboard-progress-layout { flex-direction: column; align-items: flex-start; }.dashboard-tracker { grid-template-columns: repeat(15,1fr); gap: .22rem; width: 100%; }.dashboard-ring { align-self: center; }.dashboard-mission-actions { flex-direction: column; }.dashboard-mission-actions button { width: 100%; }.dashboard-week-grid { gap: .35rem; }.dashboard-week-cells { gap: .18rem; }.dashboard-week-day small { font-size: .57rem; }.dashboard-project-grid,.dashboard-achievement-grid,.dashboard-bottom-grid { grid-template-columns: 1fr; }.dashboard-project-copy p { min-height: auto; }.dashboard-section-heading { align-items: center; }.dashboard-section-heading h2 { font-size: 1.12rem; }.dashboard-profile { padding: .2rem; }.dashboard-profile > svg { display: none; }.dashboard-content { padding-top: 1.5rem; } }
+
+.dashboard-empty-state{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    gap:18px;
+
+    padding:70px 30px;
+
+    border:1px dashed rgba(255,255,255,.12);
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.02);
+}
+
+.dashboard-empty-state svg{
+    color:#22d3ee;
+}
+
+.dashboard-empty-state h3{
+    font-size:1.35rem;
+}
+
+.dashboard-empty-state p{
+    max-width:480px;
+
+    color:var(--muted-60);
+
+    line-height:1.7;
+}
