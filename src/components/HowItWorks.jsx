@@ -160,7 +160,7 @@ export default function HowItWorks() {
 
       <div className="how-it-works-inner">
         <div className="how-it-works-header">
-          <span className="how-it-works-badge">?? How It Works</span>
+          <span className="how-it-works-badge">How It Works</span>
           <h2 className="how-it-works-title">Build the habit. Ship the work. Own the growth.</h2>
           <p className="how-it-works-subtitle">
             Mission 60 keeps every day focused, practical, and easy to follow so you can move from student to recruiter-ready faster.

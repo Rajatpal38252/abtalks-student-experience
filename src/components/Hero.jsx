@@ -63,8 +63,18 @@ function HeatmapPreview() {
 }
 
 export default function Hero() {
+  const container = {
+    hidden: { opacity: 0, y: 6 },
+    show: { opacity: 1, y: 0, transition: { staggerChildren: 0.08, when: "beforeChildren" } },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 8 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.58, ease: "easeOut" } },
+  };
+
   return (
-    <section className="hero">
+    <section className="hero" id="home">
       <style>{`
         .hero {
           position: relative;
@@ -448,52 +458,52 @@ export default function Hero() {
       <div className="hero-glow hero-glow--center" aria-hidden="true" />
 
       <div className="hero-container">
-        <div className="hero-content">
-          <div className="hero-badge">
+        <motion.div className="hero-content" variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+          <motion.div className="hero-badge" variants={item} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             <span className="hero-badge-dot" aria-hidden="true" />
             60-Day Coding Challenge
-          </div>
+          </motion.div>
 
-          <h1 className="hero-title">
+          <motion.h1 className="hero-title heading-1" variants={item}>
             From <span className="hero-title-accent">Zero Commits</span> to Recruiter Ready.
-          </h1>
+          </motion.h1>
 
-          <p className="hero-tagline">
+          <motion.p className="hero-tagline muted" variants={item}>
             One Day. One Project. One Better Developer.
-          </p>
+          </motion.p>
 
-          <p className="hero-description">
+          <motion.p className="hero-description lead" variants={item}>
             Build one project every day. Share your progress publicly. Transform 60
             days of consistency into a GitHub profile, portfolio, and proof of work
             that recruiters instantly recognize.
-          </p>
+          </motion.p>
 
-          <div className="hero-actions">
-            <button type="button" className="hero-btn hero-btn--primary">
+          <motion.div className="hero-actions" variants={item} style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+            <motion.a href="#start" className="hero-btn btn-primary hero-btn--primary" whileHover={{ scale: 1.02 }} transition={{ duration: 0.18 }}>
               Start Challenge
               <ArrowRight size={18} strokeWidth={2.5} />
-            </button>
-            <button type="button" className="hero-btn hero-btn--secondary">
+            </motion.a>
+            <motion.a href="#journey" className="hero-btn hero-btn--secondary" whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
               <LayoutDashboard size={18} strokeWidth={2} />
               View Dashboard
-            </button>
-          </div>
+            </motion.a>
+          </motion.div>
 
-          <div className="hero-stats">
-            <div className="hero-stat-card">
+          <motion.div className="hero-stats" variants={item} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 12 }}>
+            <motion.div className="hero-stat-card card" variants={item} style={{ padding: '1rem 1.125rem', minWidth: 110 }}>
               <span className="hero-stat-value">60+</span>
               <span className="hero-stat-label">Projects Built</span>
-            </div>
-            <div className="hero-stat-card">
+            </motion.div>
+            <motion.div className="hero-stat-card card" variants={item} style={{ padding: '1rem 1.125rem', minWidth: 110 }}>
               <span className="hero-stat-value">365+</span>
               <span className="hero-stat-label">GitHub Contributions</span>
-            </div>
-            <div className="hero-stat-card">
+            </motion.div>
+            <motion.div className="hero-stat-card card" variants={item} style={{ padding: '1rem 1.125rem', minWidth: 110 }}>
               <span className="hero-stat-value">Recruiter</span>
               <span className="hero-stat-label">Ready</span>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         <div className="hero-visual">
           <motion.div

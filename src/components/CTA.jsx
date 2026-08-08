@@ -6,7 +6,7 @@ export default function CTA() {
   return (
     <motion.section
       className="cta"
-      id="cta"
+      id="start"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
@@ -197,10 +197,12 @@ export default function CTA() {
           </div>
           <div className="cta-actions">
             <motion.a
-              className="cta-button"
+              className="cta-button btn-primary"
               href="#start"
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+              whileHover={{ translateY: -4, scale: 1.02 }}
+              whileTap={{ scale: 0.99 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
+              style={{ boxShadow: '0 18px 48px rgba(124,58,237,0.22)' }}
             >
               Start Mission 60 →
             </motion.a>

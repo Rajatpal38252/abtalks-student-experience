@@ -134,7 +134,7 @@ export default function Benefits() {
 
       <div className="benefits-inner">
         <div className="benefits-header">
-          <span className="benefits-badge">? Benefits</span>
+          <span className="benefits-badge">Benefits</span>
           <h2 className="benefits-title">Your daily work, sharpened for recruiters.</h2>
           <p className="benefits-copy">
             Every benefit is designed to help you stay consistent, make progress visible, and feel confident when you show your work.

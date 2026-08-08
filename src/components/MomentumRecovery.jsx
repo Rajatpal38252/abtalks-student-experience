@@ -1,22 +1,22 @@
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, X, Check, Zap, Rocket, Award, DoorOpen } from 'lucide-react';
 
 const TRADITIONAL_STEPS = [
-  { icon: '⭕', label: 'Day 1' },
-  { icon: '✅', label: 'Day 7' },
-  { icon: '❌', label: 'Miss One Day' },
-  { icon: '💔', label: 'Lose Streak' },
-  { icon: '😔', label: 'Lose Motivation' },
-  { icon: '🚪', label: 'Quit' },
+  { icon: <X size={16} />, label: 'Day 1' },
+  { icon: <Check size={16} />, label: 'Day 7' },
+  { icon: <X size={16} />, label: 'Miss One Day' },
+  { icon: <X size={16} />, label: 'Lose Streak' },
+  { icon: <X size={16} />, label: 'Lose Motivation' },
+  { icon: <DoorOpen size={16} />, label: 'Quit' },
 ];
 
 const RECOVERY_STEPS = [
-  { icon: '⭕', label: 'Day 1' },
-  { icon: '✅', label: 'Day 7' },
-  { icon: '😌', label: 'Miss One Day' },
-  { icon: '🔥', label: 'Recover Momentum' },
-  { icon: '🚀', label: 'Continue Building' },
-  { icon: '🏆', label: 'Complete 60 Days' },
+  { icon: <Check size={16} />, label: 'Day 1' },
+  { icon: <Check size={16} />, label: 'Day 7' },
+  { icon: <Zap size={16} />, label: 'Miss One Day' },
+  { icon: <Rocket size={16} />, label: 'Recover Momentum' },
+  { icon: <Rocket size={16} />, label: 'Continue Building' },
+  { icon: <Award size={16} />, label: 'Complete 60 Days' },
 ];
 
 function MomentumRecoveryStyles() {
@@ -123,10 +123,12 @@ function MomentumRecoveryStyles() {
         position: relative;
         flex: 1;
         padding: 1.75rem 1.625rem;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border: 1px solid rgba(255,255,255,0.06);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 12px 40px rgba(2,6,23,0.6);
       }
 
       .momentum-card::before {
@@ -142,10 +144,8 @@ function MomentumRecoveryStyles() {
       }
 
       .momentum-card--traditional {
-        border: 1px solid rgba(239, 68, 68, 0.25);
-        box-shadow:
-          0 4px 24px rgba(0, 0, 0, 0.35),
-          0 0 48px rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.18);
+        box-shadow: 0 8px 36px rgba(239, 68, 68, 0.06);
       }
 
       .momentum-card--traditional::before {
@@ -159,11 +159,8 @@ function MomentumRecoveryStyles() {
       }
 
       .momentum-card--recovery {
-        border: 1px solid rgba(139, 92, 246, 0.3);
-        box-shadow:
-          0 4px 24px rgba(0, 0, 0, 0.35),
-          0 0 48px rgba(139, 92, 246, 0.12),
-          0 0 64px rgba(34, 211, 238, 0.06);
+        border: 1px solid rgba(139, 92, 246, 0.22);
+        box-shadow: 0 12px 44px rgba(139,92,246,0.08), 0 8px 28px rgba(2,6,23,0.5);
       }
 
       .momentum-card--recovery::before {
@@ -201,7 +198,7 @@ function MomentumRecoveryStyles() {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0;
+        gap: 0.5rem;
       }
 
       .momentum-step {
@@ -216,8 +213,8 @@ function MomentumRecoveryStyles() {
         align-items: center;
         gap: 0.75rem;
         width: 100%;
-        max-width: 240px;
-        padding: 0.625rem 1rem;
+        max-width: 260px;
+        padding: 0.75rem 1rem;
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.06);
@@ -235,10 +232,12 @@ function MomentumRecoveryStyles() {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.125rem;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1rem;
         flex-shrink: 0;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.03);
       }
 
       .momentum-step-label {
@@ -278,19 +277,16 @@ function MomentumRecoveryStyles() {
 
       .momentum-quote {
         position: relative;
-        max-width: 640px;
+        max-width: 720px;
         margin: 0 auto;
-        padding: 2.25rem 2rem;
+        padding: 2.5rem 2.25rem;
         text-align: center;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        box-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.35),
-          0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-          0 0 60px rgba(139, 92, 246, 0.08);
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border: 1px solid rgba(255,255,255,0.06);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 20px 60px rgba(2,6,23,0.6), 0 0 40px rgba(139,92,246,0.06);
       }
 
       .momentum-quote::before {
@@ -307,13 +303,13 @@ function MomentumRecoveryStyles() {
       }
 
       .momentum-quote-text {
-        font-size: clamp(1.375rem, 3.5vw, 1.75rem);
+        font-size: clamp(1.125rem, 2.4vw, 1.5rem);
         font-weight: 700;
-        line-height: 1.3;
+        line-height: 1.28;
         letter-spacing: -0.02em;
         font-style: italic;
         color: #ffffff;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
       }
 
       .momentum-quote-text em {

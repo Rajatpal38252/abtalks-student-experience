@@ -13,7 +13,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'How much time does it take daily?',
-    answer: 'Most students spend 45–75 minutes per day. The focus is on steady progress, not burnout, so tasks are structured to fit busy schedules.',
+    answer: 'Most students spend 45â€“75 minutes per day. The focus is on steady progress, not burnout, so tasks are structured to fit busy schedules.',
   },
   {
     question: 'Do I need prior coding experience?',

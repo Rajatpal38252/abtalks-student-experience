@@ -30,13 +30,13 @@ function TestimonialCard({ testimonial, index }) {
       className="testimonial-card"
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      animate={{ y: [0, -8, 0] }}
+      viewport={{ once: true, amount: 0.28 }}
+      animate={{ y: [0, -6, 0] }}
       transition={{
-        opacity: { duration: 0.7, delay: index * 0.12 },
-        y: { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: index * 0.15 },
+        opacity: { duration: 0.7, delay: index * 0.08 },
+        y: { duration: 6, repeat: Infinity, ease: 'easeInOut', delay: index * 0.12 },
       }}
-      whileHover={{ y: -12 }}
+      whileHover={{ y: -10, scale: 1.01 }}
     >
       <div className="testimonial-avatar">
         <span>{testimonial.name.split(' ').map((part) => part[0]).join('')}</span>
@@ -167,15 +167,15 @@ export default function Testimonials() {
         .testimonial-card {
           position: relative;
           overflow: hidden;
-          min-height: 24rem;
-          padding: 2.25rem;
-          border-radius: 30px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          backdrop-filter: blur(26px);
-          -webkit-backdrop-filter: blur(26px);
-          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-          transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+          min-height: 20rem;
+          padding: 2rem;
+          border-radius: var(--radius);
+          background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+          box-shadow: 0 18px 48px rgba(2,6,23,0.6);
+          transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease, border-color 0.28s ease;
         }
 
         .testimonial-card::before {
@@ -183,8 +183,8 @@ export default function Testimonials() {
           position: absolute;
           inset: 0;
           margin: 1px;
-          border-radius: 30px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03));
+          border-radius: calc(var(--radius) + 2px);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
           pointer-events: none;
         }
 
@@ -204,16 +204,17 @@ export default function Testimonials() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 3.5rem;
-          height: 3.5rem;
-          border-radius: 18px;
+          width: 56px;
+          height: 56px;
+          border-radius: 999px;
           font-size: 1.05rem;
           font-weight: 800;
           color: #ffffff;
-          background: linear-gradient(135deg, #7c3aed 0%, #0891b2 100%);
-          box-shadow: 0 0 24px rgba(124, 58, 237, 0.3);
+          background: linear-gradient(135deg, rgba(124,58,237,0.95), rgba(34,184,255,0.9));
+          box-shadow: 0 10px 30px rgba(124,58,237,0.18), inset 0 -6px 18px rgba(0,0,0,0.12);
           margin-bottom: 1.35rem;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition: transform 0.28s ease, box-shadow 0.28s ease;
+          border: 2px solid rgba(255,255,255,0.06);
         }
 
         .testimonial-stars {
@@ -228,9 +229,9 @@ export default function Testimonials() {
         .testimonial-quote {
           margin: 0;
           font-size: 1rem;
-          line-height: 1.85;
-          color: rgba(255, 255, 255, 0.78);
-          margin-bottom: 1.75rem;
+          line-height: 1.8;
+          color: rgba(255, 255, 255, 0.86);
+          margin-bottom: 1.5rem;
         }
 
         .testimonial-meta {

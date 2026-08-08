@@ -53,6 +53,8 @@ export default function Features() {
         }
 
         .features-card {
+          position: relative;
+          overflow: hidden;
           display: flex;
           flex-direction: column;
           gap: 1.35rem;

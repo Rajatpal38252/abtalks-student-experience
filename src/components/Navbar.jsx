@@ -5,7 +5,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Journey', href: '#journey' },
   { label: 'Features', href: '#features' },
-  { label: 'Community', href: '#community' },
+  { label: 'Community', href: '#testimonials' },
 ];
 
 const SCROLL_THRESHOLD = 24;
@@ -165,7 +165,7 @@ function NavbarStyles() {
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1000;
+        z-index: 1300;
         padding: 0 1.25rem;
         transition:
           background 0.35s ease,
