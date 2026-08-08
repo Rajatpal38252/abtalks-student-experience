@@ -1,4 +1,5 @@
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Globe } from "lucide-react";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -6,62 +7,33 @@ export default function Footer() {
       <style>{`
         .footer {
           position: relative;
-          padding: 4rem 1.25rem 3rem;
+          padding: 4.5rem 1.25rem 3rem;
           background: #000000;
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          overflow: hidden;
         }
 
         .footer-inner {
-          max-width: 1200px;
+          position: relative;
+          z-index: 1;
+          max-width: 1180px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+          grid-template-columns: 1.4fr 1fr 1fr;
           gap: 2rem;
           align-items: start;
         }
 
         .footer-brand {
-          display: flex;
-          flex-direction: column;
+          display: grid;
           gap: 1rem;
         }
 
-        .footer-logo {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.85rem;
-          font-weight: 700;
+        .footer-name {
+          font-size: 1.25rem;
+          font-weight: 800;
           letter-spacing: -0.03em;
           color: #ffffff;
-        }
-
-        .footer-logo-mark {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 2.5rem;
-          height: 2.5rem;
-          border-radius: 14px;
-          background: linear-gradient(135deg, #7c3aed 0%, #0891b2 100%);
-          color: #ffffff;
-          font-size: 0.9rem;
-          font-weight: 800;
-          box-shadow: 0 0 24px rgba(124, 58, 237, 0.35);
-        }
-
-        .footer-logo-text {
-          display: flex;
-          flex-direction: column;
-          line-height: 1.1;
-        }
-
-        .footer-logo-title {
-          font-size: 1.125rem;
-        }
-
-        .footer-logo-sub {
-          font-size: 0.8rem;
-          color: rgba(255, 255, 255, 0.65);
         }
 
         .footer-copy {
@@ -76,41 +48,41 @@ export default function Footer() {
           gap: 0.8rem;
         }
 
-        .footer-section-title {
+        .footer-links-title {
           font-size: 0.95rem;
           font-weight: 700;
           color: #ffffff;
-          margin-bottom: 1rem;
         }
 
         .footer-link {
+          display: inline-block;
           color: rgba(255, 255, 255, 0.72);
           font-size: 0.96rem;
-          transition: color 0.2s ease;
+          transition: color 0.2s ease, transform 0.2s ease;
         }
 
         .footer-link:hover {
           color: #ffffff;
+          transform: translateX(2px);
         }
 
         .footer-social {
           display: flex;
-          align-items: flex-start;
-          gap: 1rem;
           flex-wrap: wrap;
+          gap: 0.9rem;
         }
 
         .footer-social-link {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 2.85rem;
-          height: 2.85rem;
+          width: 2.9rem;
+          height: 2.9rem;
           border-radius: 14px;
           background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(255, 255, 255, 0.08);
           color: #ffffff;
-          transition: transform 0.2s ease, background 0.2s ease;
+          transition: transform 0.25s ease, background 0.25s ease;
         }
 
         .footer-social-link:hover {
@@ -119,15 +91,16 @@ export default function Footer() {
         }
 
         .footer-bottom {
-          margin-top: 3rem;
-          padding-top: 2rem;
+          margin-top: 2.5rem;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
+          padding-top: 1.5rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 1rem;
+          flex-wrap: wrap;
+          gap: 0.75rem;
           color: rgba(255, 255, 255, 0.55);
-          font-size: 0.92rem;
+          font-size: 0.9rem;
         }
 
         @media (max-width: 960px) {
@@ -144,51 +117,35 @@ export default function Footer() {
 
       <div className="footer-inner">
         <div className="footer-brand">
-          <a href="#home" className="footer-logo">
-            <span className="footer-logo-mark">M60</span>
-            <span className="footer-logo-text">
-              <span className="footer-logo-title">Mission 60</span>
-              <span className="footer-logo-sub">Built for student momentum</span>
-            </span>
-          </a>
-          <p className="footer-copy">
-            A premium student experience crafted to help you ship projects daily, build GitHub momentum, and position yourself for recruiter success.
-          </p>
+          <div className="footer-name">ABTalks</div>
+          <p className="footer-copy">Helping students build proof of work.</p>
         </div>
 
         <div className="footer-links">
-          <div>
-            <div className="footer-section-title">Quick Links</div>
-            <a className="footer-link" href="#home">Challenge</a>
-            <br />
-            <a className="footer-link" href="#dashboard">Dashboard</a>
-            <br />
-            <a className="footer-link" href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
-            <br />
-            <a className="footer-link" href="#community">Community</a>
-          </div>
+          <div className="footer-links-title">Quick Links</div>
+          <a className="footer-link" href="#home">Home</a>
+          <a className="footer-link" href="#journey">Journey</a>
+          <a className="footer-link" href="#testimonials">Testimonials</a>
+          <a className="footer-link" href="#cta">Mission 60</a>
         </div>
 
         <div>
-          <div className="footer-section-title">Connect</div>
+          <div className="footer-links-title">Follow</div>
           <div className="footer-social">
             <a className="footer-social-link" href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
-              <Github size={18} strokeWidth={2} />
+              <Globe size={18} strokeWidth={2}/>
             </a>
             <a className="footer-social-link" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <Linkedin size={18} strokeWidth={2} />
+              <FaLinkedin size={18} />
             </a>
             <a className="footer-social-link" href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
-              <Twitter size={18} strokeWidth={2} />
+              <FaXTwitter size={18} />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <span>Made with ?? for students.</span>
-        <span>© {new Date().getFullYear()} Mission 60.</span>
-      </div>
+      <div className="footer-bottom">Â© 2026 ABTalks. All rights reserved.</div>
     </footer>
   );
 }
