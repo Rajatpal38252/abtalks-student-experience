@@ -17,7 +17,7 @@ const NAV_ITEMS = [
   { label: 'Certificate', icon: Award, target: 'certificate' },
 ];
 
-const WEEK = [4, 3, 4, 2, 4, 1, 3];
+
 const MILESTONES = [
   { at: 7, label: 'Week Warrior' },
   { at: 14, label: 'Two-week streak' },
