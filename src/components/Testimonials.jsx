@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ChallengeButton from './ChallengeButton';
 
 const TESTIMONIALS = [
   {
@@ -398,9 +399,7 @@ export default function Testimonials() {
               Join thousands of students building proof of work that recruiters actually notice.
             </p>
           </div>
-          <a className="testimonial-cta-button" href="#start">
-            Start Challenge →
-          </a>
+          <ChallengeButton className="testimonial-cta-button" />
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import ChallengeButton from './ChallengeButton';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -105,14 +105,10 @@ function NavLinks({ links, onNavigate, className = '' }) {
 
 function NavCTA({ className = '', onClick }) {
   return (
-    <a
-      href="#start"
+    <ChallengeButton
       className={`navbar-cta ${className}`.trim()}
       onClick={onClick}
-    >
-      Start Challenge
-      <ArrowRight size={16} strokeWidth={2.5} aria-hidden="true" />
-    </a>
+    />
   );
 }
 

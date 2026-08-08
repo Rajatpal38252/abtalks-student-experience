@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ChallengeButton from './ChallengeButton';
 
 const BADGES = ['Daily Projects', 'GitHub Growth', 'Recruiter Ready'];
 
@@ -196,16 +197,13 @@ export default function CTA() {
             </ul>
           </div>
           <div className="cta-actions">
-            <motion.a
-              className="cta-button btn-primary"
-              href="#start"
+            <motion.div
               whileHover={{ translateY: -4, scale: 1.02 }}
               whileTap={{ scale: 0.99 }}
               transition={{ duration: 0.18, ease: 'easeOut' }}
-              style={{ boxShadow: '0 18px 48px rgba(124,58,237,0.22)' }}
             >
-              Start Mission 60 →
-            </motion.a>
+              <ChallengeButton className="cta-button btn-primary" />
+            </motion.div>
           </div>
         </div>
       </div>

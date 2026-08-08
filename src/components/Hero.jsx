@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, GitBranch, LayoutDashboard } from "lucide-react";
+import { GitBranch, LayoutDashboard } from "lucide-react";
+import ChallengeButton from './ChallengeButton';
 
 const HEATMAP_COLORS = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
 
@@ -479,11 +480,10 @@ export default function Hero() {
           </motion.p>
 
           <motion.div className="hero-actions" variants={item} style={{ display: 'flex', gap: 12, marginTop: 8 }}>
-            <motion.a href="#start" className="hero-btn btn-primary hero-btn--primary" whileHover={{ scale: 1.02 }} transition={{ duration: 0.18 }}>
-              Start Challenge
-              <ArrowRight size={18} strokeWidth={2.5} />
-            </motion.a>
-            <motion.a href="#journey" className="hero-btn hero-btn--secondary" whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
+            <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.18 }}>
+              <ChallengeButton className="hero-btn btn-primary hero-btn--primary" />
+            </motion.div>
+            <motion.a href="/dashboard" className="hero-btn hero-btn--secondary" whileHover={{ y: -2 }} transition={{ duration: 0.18 }}>
               <LayoutDashboard size={18} strokeWidth={2} />
               View Dashboard
             </motion.a>
