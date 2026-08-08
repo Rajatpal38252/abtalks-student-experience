@@ -32,12 +32,15 @@ import {
 } from 'lucide-react';
 import './Dashboard.css';
 
+ 
+
 const NAV_ITEMS = [
   { label: 'Overview', icon: Home, target: 'overview' },
   { label: 'Today’s mission', icon: Target, target: 'mission' },
   { label: 'Projects', icon: FolderKanban, target: 'projects' },
   { label: 'Achievements', icon: Award, target: 'achievements' },
   { label: 'Leaderboard', icon: Trophy, target: 'leaderboard' },
+  { label: 'Certificate', icon: Award, target: 'certificate' },
 ];
 
 
@@ -404,6 +407,8 @@ function Timeline() {
 export default function Dashboard() {
   const [active, setActive] = useState('overview');
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [lockedMessage, setLockedMessage] = useState("");
+
   const navigateTo = useNavigate();
   const { challenge, startChallenge } = useChallenge();
   const { projects } = challenge;
@@ -420,7 +425,23 @@ export default function Dashboard() {
     return () => window.removeEventListener('resize', listener);
   }, []);
 
-  const navigate = (target) => { setActive(target); scrollToSection(target); };
+  const navigate = (target) => {
+  if (target === "certificate") {
+    if (challenge.challengeCompleted) {
+      navigateTo("/certificate");
+    } else {
+     setLockedMessage("🏆 Complete all 60 challenges to unlock your certificate.");
+
+setTimeout(() => {
+    setLockedMessage("");
+}, 2500);
+    }
+    return;
+  }
+
+  setActive(target);
+  scrollToSection(target);
+};
   const openCurrentChallenge = () => {
     if (challenge.challengeCompleted) {
       navigateTo('/certificate');
@@ -430,7 +451,11 @@ export default function Dashboard() {
     navigateTo(`/challenge/day/${challenge.currentDay}`);
   };
 
-  return <div className="dashboard-app"><Sidebar active={active} onNavigate={navigate} mobileOpen={mobileOpen} onClose={() => setMobileOpen(false)} /><div className="dashboard-main"><Topbar onMenu={() => setMobileOpen(true)} /><main className="dashboard-content"><motion.section className="dashboard-welcome" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}><div><span className="dashboard-kicker">
+  return <div className="dashboard-app"><Sidebar active={active} onNavigate={navigate} mobileOpen={mobileOpen} onClose={() => setMobileOpen(false)} /><div className="dashboard-main"><Topbar onMenu={() => setMobileOpen(true)} />{lockedMessage && (
+  <div className="dashboard-toast">
+      {lockedMessage}
+  </div>
+)}<main className="dashboard-content"><motion.section className="dashboard-welcome" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}><div><span className="dashboard-kicker">
     {today}
 </span><h1>Welcome back, Rajat <span>✦</span></h1><p>You’re building a strong portfolio, one focused day at a time.</p></div><button className="btn-primary dashboard-main-button" onClick={openCurrentChallenge}>Continue today’s challenge <Play size={17} fill="currentColor" /></button></motion.section><StatCards challenge={challenge} /><div className="dashboard-primary-grid"><ProgressSection challenge={challenge} /><MissionCard challenge={challenge} onStart={openCurrentChallenge} /></div><WeeklyActivity /><Projects projects={projects} /><Achievements challenge={challenge} /><div className="dashboard-bottom-grid"><Leaderboard /><Timeline /></div></main></div></div>;
 }
