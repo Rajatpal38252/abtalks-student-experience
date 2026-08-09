@@ -223,6 +223,17 @@ https://github.com/Rajatpal38252/abtalks-student-experience
 
 ---
 
+# 📸 Screenshots
+
+> Screenshots can be added here to showcase the application.
+
+- Landing Page
+- Dashboard
+- Daily Challenge
+- Certificate Page
+
+---
+
 # 🤖 AI-Assisted Development
 
 The project was developed using an AI-assisted workflow to accelerate planning, implementation, debugging, UI refinement, and code review.
@@ -249,6 +260,7 @@ A detailed development log and the major prompts used during development are ava
 
 ---
 
+# 👨‍💻 Developer
 # 👥 Team
 
 **Team Name:** **Team NovaX**
@@ -267,23 +279,18 @@ A detailed development log and the major prompts used during development are ava
   - UI/UX implementation
   - Frontend integration
   - Project deployment
-  - Documentation
 
 - **Priyanshu Sengar**
   - Frontend development
   - Feature implementation
   - Testing and refinement
-  - AI-assisted development support
+  
 
+  # 👨‍💻 Repository Maintainer
 
-Made with ❤️ by **Team NovaX**:
+**Rajat Kumar**
 
-<<<<<<< HEAD
-* **Rajat Kumar** — [@Rajatpal38252](https://github.com/Rajatpal38252)
-* **Priyanshu Sengar** — [@priyanshu-sengar0112](https://github.com/priyanshu-sengar0112)
-=======
 GitHub: https://github.com/Rajatpal38252
->>>>>>> 044c64d (docs: finalize README and AI usage documentation)
 
 
 # 🙏 Acknowledgements
