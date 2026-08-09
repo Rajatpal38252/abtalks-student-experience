@@ -2,6 +2,10 @@
 
 # ABTalks Student Experience Redesign
 
+**Team:** Team NovaX
+
+**Hackathon:** ABTalks Student Experience Redesign Hackathon
+
 ## AI Usage Log
 
 This document records the major AI prompts and development workflow used while building this project during the hackathon.
@@ -11,6 +15,8 @@ The project was developed iteratively using AI-assisted development. AI was used
 ---
 
 # AI Tools Used
+
+The choice of AI tool varied depending on the task. Different tools were used for planning, code generation, UI refinement, debugging, and repository-aware improvements throughout the project.
 
 ## ChatGPT (OpenAI)
 
@@ -384,4 +390,4 @@ Git was used throughout development with multiple incremental commits documentin
 
 AI was used as a collaborative development assistant for planning, implementation, debugging, refactoring, and UI improvements.
 
-The team reviewed all AI-generated output, integrated the final implementation, verified functionality locally, managed the Git history, prepared the deployment, and completed the final submission.
+AI tools were used as development assistants throughout the project. All generated suggestions were reviewed, adapted where necessary, tested locally, and integrated into the final application by the team. Final implementation decisions, repository management, deployment, and submission were completed by the team..
