@@ -249,10 +249,6 @@ A detailed development log and the major prompts used during development are ava
 
 ---
 
-<<<<<<< HEAD
-# 👨‍💻 Developers
-=======
-# 👨‍💻 Developer
 # 👥 Team
 
 **Team Name:** **Team NovaX**
@@ -271,15 +267,14 @@ A detailed development log and the major prompts used during development are ava
   - UI/UX implementation
   - Frontend integration
   - Project deployment
+  - Documentation
 
 - **Priyanshu Sengar**
   - Frontend development
   - Feature implementation
   - Testing and refinement
-  
+  - AI-assisted development support
 
-  # 👨‍💻 Repository Maintainer
->>>>>>> 044c64d (docs: finalize README and AI usage documentation)
 
 Made with ❤️ by **Team NovaX**:
 
