@@ -363,9 +363,9 @@ function Achievements({ challenge }) {
 }
 function Leaderboard({ challenge }) {
   const leaders = [
-    { rank: 1, name: 'You', initials: 'RK', streak: challenge.streak, tone: 'purple' },
-    { rank: 2, name: 'Builder #102', initials: 'B1', streak: Math.max(challenge.streak + 4, 18), tone: 'blue' },
-    { rank: 3, name: 'Builder #241', initials: 'B2', streak: Math.max(challenge.streak + 2, 15), tone: 'cyan' },
+    { rank: 1, name: 'You', initials: 'B1', streak: challenge.streak, tone: 'purple' },
+    { rank: 2, name: 'Builder #102', initials: 'B2', streak: Math.max(challenge.streak + 4, 18), tone: 'blue' },
+    { rank: 3, name: 'Builder #241', initials: 'B3', streak: Math.max(challenge.streak + 2, 15), tone: 'cyan' },
   ];
   return (
     <section className="dashboard-panel dashboard-leaderboard card" id="leaderboard">
