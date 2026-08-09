@@ -244,10 +244,12 @@ A detailed development log and the major prompts used during development are ava
 
 ---
 
-# 👨‍💻 Developer's
+# 👨‍💻 Developers
 
-**Rajat Kumar**
-**Priyanshu Sengar**
+Made with ❤️ by **Team NovaX**:
+
+* **Rajat Kumar** — [@Rajatpal38252](https://github.com/Rajatpal38252)
+* **Priyanshu Sengar** — [@priyanshu-sengar0112](https://github.com/priyanshu-sengar0112)
 
 
 # 🙏 Acknowledgements
