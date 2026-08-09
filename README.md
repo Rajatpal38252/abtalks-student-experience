@@ -218,17 +218,6 @@ https://github.com/Rajatpal38252/abtalks-student-experience
 
 ---
 
-# 📸 Screenshots
-
-> Screenshots can be added here to showcase the application.
-
-- Landing Page
-- Dashboard
-- Daily Challenge
-- Certificate Page
-
----
-
 # 🤖 AI-Assisted Development
 
 The project was developed using an AI-assisted workflow to accelerate planning, implementation, debugging, UI refinement, and code review.
