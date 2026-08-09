@@ -6,6 +6,11 @@
 
 A modern React application developed for the **ABTalks Student Experience Redesign Hackathon**, helping students stay consistent, build real-world projects, track learning progress, and celebrate achievements through an engaging and interactive experience.
 
+
+**🏆 Team:** Team NovaX  
+**🎯 Hackathon:** ABTalks Student Experience Redesign Hackathon
+
+
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Project-blue?style=for-the-badge)](https://abtalks-student-experience.vercel.app/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
@@ -244,12 +249,46 @@ A detailed development log and the major prompts used during development are ava
 
 ---
 
+<<<<<<< HEAD
 # 👨‍💻 Developers
+=======
+# 👨‍💻 Developer
+# 👥 Team
+
+**Team Name:** **Team NovaX**
+
+| Member | GitHub |
+|---------|--------|
+| Rajat Kumar | [@Rajatpal38252](https://github.com/Rajatpal38252) |
+| Priyanshu Sengar | [@priyanshu-sengar0112](https://github.com/priyanshu-sengar0112) |
+
+---
+
+## 💡 Contributions
+
+- **Rajat Kumar**
+  - React development
+  - UI/UX implementation
+  - Frontend integration
+  - Project deployment
+
+- **Priyanshu Sengar**
+  - Frontend development
+  - Feature implementation
+  - Testing and refinement
+  
+
+  # 👨‍💻 Repository Maintainer
+>>>>>>> 044c64d (docs: finalize README and AI usage documentation)
 
 Made with ❤️ by **Team NovaX**:
 
+<<<<<<< HEAD
 * **Rajat Kumar** — [@Rajatpal38252](https://github.com/Rajatpal38252)
 * **Priyanshu Sengar** — [@priyanshu-sengar0112](https://github.com/priyanshu-sengar0112)
+=======
+GitHub: https://github.com/Rajatpal38252
+>>>>>>> 044c64d (docs: finalize README and AI usage documentation)
 
 
 # 🙏 Acknowledgements
