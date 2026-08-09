@@ -244,15 +244,11 @@ A detailed development log and the major prompts used during development are ava
 
 ---
 
-# 👨‍💻 Developer
+# 👨‍💻 Developer's
 
 **Rajat Kumar**
+**Priyanshu Sengar**
 
-GitHub
-
-https://github.com/Rajatpal38252
-
----
 
 # 🙏 Acknowledgements
 
